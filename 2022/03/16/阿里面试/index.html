@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="pretty much sucked life">
+    <title>阿里面试 | @Holden McGroin Bed</title>
+
+    <!-- Open Graph -->
+    <meta name="description" content="分布式概念 一致性哈希算法   中间件 分布式缓存-redis redis为什么快 redis数据类型 渐进式rehash 缓存失效场景   消息队列 JMS API规范   搜索引擎-Elastic Search   Mysql和NoSql 数据库范式 数据库并发事务问题和隔离级别      分布式概念大型网站： 高并发、高可用、高性能(具体指什么呢) 大型网站演化：  应用程序、数据库、文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里面试">
+<meta property="og:url" content="http://bacmive.github.io/2022/03/16/%E9%98%BF%E9%87%8C%E9%9D%A2%E8%AF%95/">
+<meta property="og:site_name" content="@Holden McGroin Bed">
+<meta property="og:description" content="分布式概念 一致性哈希算法   中间件 分布式缓存-redis redis为什么快 redis数据类型 渐进式rehash 缓存失效场景   消息队列 JMS API规范   搜索引擎-Elastic Search   Mysql和NoSql 数据库范式 数据库并发事务问题和隔离级别      分布式概念大型网站： 高并发、高可用、高性能(具体指什么呢) 大型网站演化：  应用程序、数据库、文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-16T13:11:47.000Z">
+<meta property="article:modified_time" content="2022-04-06T07:38:24.445Z">
+<meta property="article:author" content="Holden McGroin">
+<meta property="article:tag" content="java python go">
+<meta name="twitter:card" content="summary">
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "Holden McGroin",
+  "url": "http://bacmive.github.io"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>@Holden McGroin Bed</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">Holden McGroin</a>
+                    
+                        <div class="meta">
+                            Coder / Hunaner
+                        </div>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        <div class="item">
+                            <i class="marker icon" style="float: left"></i>
+                            <div class="content">Changsha</div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+
+                                <a target="_blank" rel="noopener" href="https://github.com/bacmive"><i class="large github icon" style="float: left"></i></a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        首页
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-阿里面试" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    阿里面试
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <!-- toc --><html><head></head><body><ul class="ui list">
+<li><a href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%A6%82%E5%BF%B5">分布式概念</a><ul>
+<li><a href="#%E4%B8%80%E8%87%B4%E6%80%A7%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95">一致性哈希算法</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%AD%E9%97%B4%E4%BB%B6">中间件</a><ul>
+<li><a href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98-redis">分布式缓存-redis</a><ul>
+<li><a href="#redis%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BF%AB">redis为什么快</a></li>
+<li><a href="#redis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">redis数据类型</a></li>
+<li><a href="#%E6%B8%90%E8%BF%9B%E5%BC%8Frehash">渐进式rehash</a></li>
+<li><a href="#%E7%BC%93%E5%AD%98%E5%A4%B1%E6%95%88%E5%9C%BA%E6%99%AF">缓存失效场景</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97">消息队列</a><ul>
+<li><a href="#jms-api%E8%A7%84%E8%8C%83">JMS API规范</a></li>
+</ul>
+</li>
+<li><a href="#%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E-elastic-search">搜索引擎-Elastic Search</a></li>
+</ul>
+</li>
+<li><a href="#mysql%E5%92%8Cnosql">Mysql和NoSql</a><ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8C%83%E5%BC%8F">数据库范式</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E9%97%AE%E9%A2%98%E5%92%8C%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB">数据库并发事务问题和隔离级别</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="分布式概念">分布式概念</span></h1><p>大型网站： 高并发、高可用、高性能(具体指什么呢)</p>
+<p>大型网站演化：</p>
+<ol class="ui list">
+<li>应用程序、数据库、文件等所有资源都在同一台服务器上</li>
+<li>应用服务、数据服务、文件服务分离</li>
+<li>使用缓存改善网站性能：80%的业务访问集中在20%的数据上<ul>
+<li>本地缓存</li>
+<li>远程分布式缓存</li>
+</ul>
+</li>
+<li>应用服务器集群 + 负载均衡调度服务器</li>
+<li>数据库读写分离： 主从热备，配置两台主从关系数据库，主服务器负责写，从服务器负责读；主从同步：主服务器将更新同步至从服务器</li>
+<li>加速网站响应：反向代理和CDN加速<ul>
+<li>CDN 部署在网络提供商的机房</li>
+<li>反向代理则部署在网站的中心机房， 如果反向代理服务器中缓存着用户请求的资源，就将其直接返回给用户</li>
+</ul>
+</li>
+<li>分布式文件系统、数据库业务分库、分布式数据库系统</li>
+<li>使用NoSQL和搜索引擎</li>
+<li>业务拆分</li>
+<li>分布式微服务</li>
+</ol>
+<p>分布式理论</p>
+<ul class="ui list">
+<li>CAP理论的核心是：一个分布式系统不可能同时很好的满足一致性，可用性和分区容错性这三个需求</li>
+<li>BASE：基本可用（Basically Available），软状态（Soft state），最终一致（Eventually consistent）</li>
+<li>分布式一致性理论paxos、raft、zab算法</li>
+</ul>
+<h2><span id="一致性哈希算法">一致性哈希算法</span></h2><p>1）将哈希函数的值域空间组成一个虚拟的圆环（哈希环），例如0~2^32-1(0和2^32-1重合)<br>2）将服务器标识使用哈希函数分别哈希，确定其在哈希环上的位置<br>3）定位数据key访问的服务器：将数据key用哈希函数计算哈希值并确定在哈希环上的位置，从此位置沿哈希环顺时针走遇到的第一台服务器</p>
+<p>服务器节点太少，可能会造成数据集中在某几台服务器上，采用<strong>虚拟节点机制</strong><br>0）对每个服务器进行多个哈希，每个计算结果位置都放置一个此服务器，成为虚拟节点（上述第三步可以确定虚拟节点，再确定对应服务器）</p>
+<h1><span id="中间件">中间件</span></h1><h2><span id="分布式缓存-redis">分布式缓存-redis</span></h2><h3><span id="redis为什么快">redis为什么快</span></h3><ul class="ui list">
+<li>纯内存操作</li>
+<li>单线程操作，避免频繁的上下文切换</li>
+<li>采用非阻塞I/O多路复用机制-reactor模型（redis还提供了select、epoll、evport、kqueue等多路复用函数库）</li>
+</ul>
+<h3><span id="redis数据类型">redis数据类型</span></h3><ul class="ui list">
+<li>string：包装了c语言字符串类型</li>
+<li>hash, list, set, sorted set<blockquote>
+<p>redis大key:</p>
+<ol class="ui list">
+<li>单个简单的key存储的value很大（大于10kb）</li>
+<li>hash， set，zset，list 中存储过多的元素（以万为单位）<br>处理办法:<br>a. 直接删除：造成阻塞<br>b. 异步删除：unlink（redis4.0版本后）</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3><span id="渐进式rehash">渐进式rehash</span></h3><ul class="ui list">
+<li>发生场景： 当哈希表保存的键值对增多或者减少时， 为了让哈希表的负载因子（load factor）维持在一个合理的范围之内，需要对哈希表的大小进行相应的扩展或者收缩。</li>
+<li>渐进式rehash原因：整个rehash过程并不是一步完成的，而是分多次、渐进式的完成。如果哈希表中保存着数量巨大的键值对时，若一次进行rehash，很有可能会导致服务器宕机。</li>
+<li>rehash步骤：<ul>
+<li>为ht[1]分配空间，让字典同时持有ht[0]和ht[1]两个哈希表</li>
+<li>维持索引计数器变量rehashidx，并将它的值设置为0，表示rehash开始</li>
+<li>每次对字典<strong>执行增删改查</strong>时，将ht[0]的rehashidx索引上的所有键值对rehash到ht[1]，将rehashidx值+1</li>
+<li>当ht[0]的所有键值对都被rehash到ht[1]中，程序将rehashidx的值设置为-1，表示rehash操作完成</li>
+</ul>
+</li>
+</ul>
+<h3><span id="缓存失效场景">缓存失效场景</span></h3><ul class="ui list">
+<li>缓存穿透：大量访问一个不存在的key，缓存不起作用，请求会穿透到DB，流量大时DB会挂掉（采用布隆过滤器）</li>
+<li>缓存雪崩：大量的key设置了相同的过期时间，导致在缓存在同一时刻全部失效，造成瞬时DB请求量大、压力骤增，引起雪<br>崩（采用随机过期时间）    </li>
+</ul>
+<h2><span id="消息队列">消息队列</span></h2><p>应用解耦、流量削峰、日志处理、消息通讯<br>例如：kafka, ActiveMQ, RocketMQ</p>
+<h3><span id="jms-api规范">JMS API规范</span></h3><p>JMS（JAVA Message Service,java消息服务）API是J2EE平台上的一个消息服务的标准/规范</p>
+<h4><span id="jms消息模型">JMS消息模型</span></h4><ul class="ui list">
+<li>点对点（P2P）<br>P2P模式包含三个角色：消息队列（Queue），发送者(Sender)，接收者(Receiver)。每个消息都被发送到一个特定的队列，接收者从队列中获取消息。队列保留着消息，直到他们被消费或超时。这种模型保证每个消息都会被成功处理。</li>
+<li>发布/订阅（Pub/Sub）<br>Pub/sub模式包含三个角色：主题（Topic），发布者（Publisher），订阅者（Subscriber） 多个发布者将消息发送到Topic,系统将这些消息传递给多个订阅者。如果希望发送的消息可以不被做任何处理、或者只被一个消息者处理、或者可以被多个消费者处理的话，那么可以采用Pub/Sub模型</li>
+</ul>
+<h2><span id="搜索引擎-elastic-search">搜索引擎-Elastic Search</span></h2><p>优点：</p>
+<ul class="ui list">
+<li>全文索引（倒排索引）</li>
+<li>支持聚合分析</li>
+</ul>
+<h1><span id="mysql和nosql">Mysql和NoSql</span></h1><p>RDBMS SQL</p>
+<ul class="ui list">
+<li>高度组织化结构化数据</li>
+<li>结构化查询语言（SQL）</li>
+<li>严格的一致性</li>
+<li>基础事务<br>NoSQL</li>
+<li>没有预定义的格式：键-值对存储，列存储，文档存储，图形数据库</li>
+<li>最终一致性，而非ACID属性</li>
+<li>高性能，高可用性和可伸缩性</li>
+</ul>
+<p>Nosql</p>
+<ul class="ui list">
+<li>键-值对存储：Redis</li>
+<li>列存储：HBase, Cassandra</li>
+<li>文档存储：MongoDB</li>
+<li>图形数据库: Neo4J</li>
+</ul>
+<h2><span id="数据库范式">数据库范式</span></h2><p>第一范式：表中的每一列都是不可分割的基本数据项<br>第二范式：非主键列完全依赖于主键列<br>第三范式：非主键列直接依赖于主键列</p>
+<h2><span id="数据库并发事务问题和隔离级别">数据库并发事务问题和隔离级别</span></h2><p>并发事务问题</p>
+<ol class="ui list">
+<li>丢失更新：两个事务同时读取再分别写回，后写回的数据覆盖先写回的数据</li>
+<li>脏读：一个事务读取另一个事务未提交的数据</li>
+<li>不可重复读：一个事务中两个读取相同数据，得到不同结果</li>
+<li>幻读：一个事务中读取给定范围的数据，得到不同数量的结果</li>
+</ol>
+<p>并发事务隔离级别</p>
+<ol class="ui list">
+<li>读未提交：不能隔离以上所有问题</li>
+<li>读已提交：能够隔离丢失更新和脏读</li>
+<li>可重复读：隔离不可重复读</li>
+<li>序列化：隔离幻读</li>
+</ol>
+</body></html>
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2022-03-16T13:11:47.000Z" itemprop="datePublished">2022-03-16</time>
+
+    </span>
+    <span class="post-description-item">
+        
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a class="ui tiny button disabled"><i class="angle left icon"></i>前一篇</a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2022/03/06/git%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B/" class="ui tiny button">
+                    
+                    git使用案例
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#undefined"><span>分布式概念</span></a><ol><li><a href="#undefined"><span>一致性哈希算法</span></a></li></ol></li><li><a href="#undefined"><span>中间件</span></a><ol><li><a href="#undefined"><span>分布式缓存-redis</span></a><ol><li><a href="#undefined"><span>redis为什么快</span></a></li><li><a href="#undefined"><span>redis数据类型</span></a></li><li><a href="#undefined"><span>渐进式rehash</span></a></li><li><a href="#undefined"><span>缓存失效场景</span></a></li></ol></li><li><a href="#undefined"><span>消息队列</span></a><ol><li><a href="#undefined"><span>JMS API规范</span></a><ol><li><a href="#undefined"><span>JMS消息模型</span></a></li></ol></li></ol></li><li><a href="#undefined"><span>搜索引擎-Elastic Search</span></a></li></ol></li><li><a href="#undefined"><span>Mysql和NoSql</span></a><ol><li><a href="#undefined"><span>数据库范式</span></a></li><li><a href="#undefined"><span>数据库并发事务问题和隔离级别</span></a></li></ol></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2022 <a href="/">Holden McGroin</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
